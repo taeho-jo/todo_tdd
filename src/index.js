@@ -40,5 +40,11 @@ app.use(_.del('/todos', async (ctx) => {
   else ctx.body = 'delete fail'
 }));
 
+app.use(_.put("/todos", async (ctx) => {
+  const {_id, title} = ctx.request.body.data;
+  const todo = await Todo.findOne({_id});
+  todo.title = title;
+  ctx.body = await todo.save();
+}));
 
 app.listen(3030);
