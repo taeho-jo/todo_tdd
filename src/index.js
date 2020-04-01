@@ -36,9 +36,9 @@ app.use(_.get('/todos', async (ctx) => {
 app.use(_.del('/todos', async (ctx) => {
   const {_id} = ctx.request.query;
   const res = await Todo.deleteOne({_id});
-  if (res.deletedCount > 0) {
-    ctx.body = "delete success"
-  } else ctx.body = 'delete fail'
+  if (res.deletedCount > 0) ctx.body = "delete success";
+  else ctx.body = 'delete fail'
 }));
+
 
 app.listen(3030);
