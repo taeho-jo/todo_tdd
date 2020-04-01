@@ -6,5 +6,7 @@ const TodoSchema = new mongoose.Schema({
   desc: String,
   done: Boolean
 });
-
+TodoSchema.methods.isNotDone = function () {
+  return !this.done;
+}
 module.exports = mongoose.model('Todo', TodoSchema);
